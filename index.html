@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dating? ❤️</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; display:flex; justify-content:center; align-items:center;
+    font-family:Arial,sans-serif; background:linear-gradient(135deg,#ffd6e7,#fff1f7);
+    overflow:hidden;
+  }
+  .card{
+    width:min(90%,420px); padding:35px 25px; text-align:center;
+    background:rgba(255,255,255,.9); border-radius:28px;
+    box-shadow:0 15px 45px rgba(0,0,0,.15);
+  }
+  h1{font-size:42px;margin:10px 0 8px}
+  p{font-size:18px;color:#555}
+  .buttons{position:relative;height:120px;margin-top:25px}
+  button{
+    border:0;border-radius:999px;padding:14px 28px;font-size:18px;font-weight:bold;
+    cursor:pointer;transition:.2s;position:absolute;top:25px;
+  }
+  #yes{left:20%;background:#35b86b;color:white}
+  #no{left:55%;background:#ef5b72;color:white}
+  #yes:hover{transform:scale(1.08)}
+  #result{display:none;font-size:24px;font-weight:bold;margin-top:20px}
+  .heart{font-size:54px;animation:pulse 1s infinite}
+  @keyframes pulse{50%{transform:scale(1.15)}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>Dating?</h1>
+  <p id="question">Ek simple sa sawaal hai... 😄</p>
+  <div class="buttons" id="area">
+    <button id="yes">YES ❤️</button>
+    <button id="no">NO 😜</button>
+  </div>
+  <div id="result">Yayyy! I knew it! 🥰🎉❤️</div>
+</div>
+
+<script>
+const no=document.getElementById("no");
+const area=document.getElementById("area");
+const yes=document.getElementById("yes");
+const result=document.getElementById("result");
+const question=document.getElementById("question");
+
+function moveNo(){
+  const maxX=area.clientWidth-no.offsetWidth;
+  const maxY=area.clientHeight-no.offsetHeight;
+  no.style.left=Math.max(0,Math.random()*maxX)+"px";
+  no.style.top=Math.max(0,Math.random()*maxY)+"px";
+}
+no.addEventListener("mouseenter",moveNo);
+no.addEventListener("touchstart",function(e){e.preventDefault();moveNo();});
+no.addEventListener("click",moveNo);
+
+yes.addEventListener("click",()=>{
+  area.style.display="none";
+  question.textContent="Best decision ever! 😍";
+  result.style.display="block";
+});
+</script>
+</body>
+</html>
